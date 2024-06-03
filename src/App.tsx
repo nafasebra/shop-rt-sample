@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className='min-h-screen bg-white container py-4'>
+      <main className='min-h-screen bg-white container py-8'>
         <RouterProvider router={router} fallbackElement={<Loading />} />
       </main>
       <Footer />

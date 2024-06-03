@@ -8,19 +8,19 @@ const router = createHashRouter(
     {
       path: "/",
       lazy: async () => ({
-        Component: (await import("../Pages/Homepage")).default,
+        Component: (await import("../pages/homepage")).default,
       }),
     },
     {
       path: "/product",
       lazy: async () => ({
-        Component: (await import("../Pages/Product")).default,
+        Component: (await import("../pages/product")).default,
       }),
     },
     {
       path: "/cart",
       lazy: async () => ({
-        Component: (await import("../Pages/ShoppingCart")).default,
+        Component: (await import("../pages/shoppingCart")).default,
       }),
     },
   ],

@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 type cartType = {
   id: string;
+  title: string;
   count: number;
 };
 
@@ -15,7 +16,8 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const cart = {
-        id: action.payload.id,
+        id: nanoid(),
+        title: action.payload.title,
         count: 1,
       };
       state.carts.push(cart);

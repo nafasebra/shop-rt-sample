@@ -32,7 +32,7 @@ function ProductCard({ data }: ProductProps) {
       <div className="w-full flex flex-col">
         <h2 className="font-bold text-lg">{data.title}</h2>
         <div className="flex items-center justify-between gap-3">
-          <p>${data.price}</p>
+          <p className="font-bold text-3xl">${data.price}</p>
           <button
             className={`transition-all border ${
               isInCart

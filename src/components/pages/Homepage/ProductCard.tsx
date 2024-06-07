@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
-import { addToCart } from "../../../service/feature/Cart/CartSlice";
-import { useAppDispatch, useAppSelector } from "../../../service/store";
+import { addToCart, removeCart } from "../../../service/feature/Cart/CartSlice";
+import { useAppDispatch } from "../../../service/store";
+import { useState } from "react";
 
 function ProductCard() {
+  const [temp, setTemp] = useState(false);
   const dispach = useAppDispatch();
-  const state = useAppSelector(state => state.cart)
-
-  console.log(state)
 
   const ToggleButton = () => {
-    dispach(
-      addToCart({
-        title: "abc",
-        count: 1,
-      })
-    );
+    setTemp(!temp);
+    if (temp) {
+      dispach(removeCart("123"));
+    } else {
+      dispach(
+        addToCart({
+          id: "123",
+          title: "abc",
+          count: 1,
+        })
+      );
+    }
   };
 
   return (
@@ -27,10 +32,14 @@ function ProductCard() {
         <div className="flex items-center justify-between gap-3">
           <p>$12</p>
           <button
-            className={`border border-slate-800 bg-slate-800 rounded-lg text-white py-2 px-3`}
+            className={`transition-all border ${
+              temp
+                ? "border-red-500 bg-red-500"
+                : "border-slate-800 bg-slate-800"
+            } rounded-lg text-white py-2 px-3`}
             onClick={ToggleButton}
           >
-            Add
+            {temp ? "Remove" : "Add"}
           </button>
         </div>
       </div>

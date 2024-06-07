@@ -1,0 +1,38 @@
+[
+  {
+    "id": "mgewYQT4cbGhvruuVmFgRg",
+    "productTitle": "Awesome clothes",
+    "imageURL": "/images/1.webp",
+    "price": 12
+  },
+  {
+    "id": "eYmm+mzvvklIPLulH71iJw",
+    "productTitle": "Awesome clothes 2",
+    "imageURL": "/images/2.webp",
+    "price": 5
+  },
+  {
+    "id": "qAmR1OJcSBV7oeWKOFdJAg",
+    "productTitle": "Awesome clothes pro",
+    "imageURL": "/images/3.webp",
+    "price": 35
+  },
+  {
+    "id": "yjgPLohfxqYuf4rDgSoDPg",
+    "productTitle": "Awesome clothes pro white",
+    "imageURL": "/images/1.webp",
+    "price": 10
+  },
+  {
+    "id": "kNL5qShM270m48B/6GuBWA",
+    "productTitle": "Awesome clothes black",
+    "imageURL": "/images/2.webp",
+    "price": 1
+  },
+  {
+    "id": "8DWdUb3Sui3+xf9lQhX7lg",
+    "productTitle": "Awesome clothes max",
+    "imageURL": "/images/3.webp",
+    "price": 50
+  }
+]

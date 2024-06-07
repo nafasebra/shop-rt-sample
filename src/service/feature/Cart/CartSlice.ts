@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const cart = {
-        id: nanoid(),
+        id: action.payload.id,
         title: action.payload.title,
         count: 1,
       };

@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type cartType = {
   id: string;
@@ -23,7 +23,7 @@ export const cartSlice = createSlice({
       state.carts.push(cart);
     },
     removeCart: (state, action) => {
-      state.carts.filter((item) => item.id === action.payload);
+      state.carts = state.carts.filter((item) => item.id !== action.payload);
     },
   },
 });

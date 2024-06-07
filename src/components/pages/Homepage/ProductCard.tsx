@@ -11,12 +11,12 @@ function ProductCard({data}: ProductProps) {
   const ToggleButton = () => {
     setTemp(!temp);
     if (temp) {
-      dispach(removeCart("123"));
+      dispach(removeCart(data.id));
     } else {
       dispach(
         addToCart({
-          id: "123",
-          title: "abc",
+          id: data.id,
+          title: data.title,
           count: 1,
         })
       );

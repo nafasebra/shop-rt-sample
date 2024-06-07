@@ -1,5 +1,5 @@
 export type ProductDataType = {
-  id: number;
+  id: string;
   title: string;
   imageURL: string;
   price: number;  

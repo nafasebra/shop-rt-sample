@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { addToCart, removeCart } from "../../../service/feature/Cart/CartSlice";
 import { useAppDispatch } from "../../../service/store";
 import { useState } from "react";
+import { ProductProps } from "./type";
 
-function ProductCard() {
+function ProductCard({data}: ProductProps) {
   const [temp, setTemp] = useState(false);
   const dispach = useAppDispatch();
 
@@ -24,13 +25,13 @@ function ProductCard() {
 
   return (
     <article className="border border-gray-300 rounded-lg p-4 flex flex-col items-center gap-4">
-      <Link to={"/product?id=12"}>
-        <img src="/images/1.webp" className="h-[250px]" />
+      <Link to={`/product?id=${data.id}`}>
+        <img src={data.imageURL} className="h-[250px]" />
       </Link>
       <div className="w-full flex flex-col">
-        <h2 className="font-bold text-lg">Clothed</h2>
+        <h2 className="font-bold text-lg">{data.title}</h2>
         <div className="flex items-center justify-between gap-3">
-          <p>$12</p>
+          <p>${data.price}</p>
           <button
             className={`transition-all border ${
               temp

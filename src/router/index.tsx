@@ -12,12 +12,6 @@ const router = createHashRouter(
       }),
     },
     {
-      path: "/product",
-      lazy: async () => ({
-        Component: (await import("../pages/product")).default,
-      }),
-    },
-    {
       path: "/cart",
       lazy: async () => ({
         Component: (await import("../pages/shoppingCart")).default,

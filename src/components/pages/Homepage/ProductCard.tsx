@@ -3,6 +3,7 @@ import { addToCart, removeCart } from "../../../service/feature/Cart/CartSlice";
 import { useAppDispatch, useAppSelector } from "../../../service/store";
 import { useCallback, useEffect, useState } from "react";
 import { ProductProps } from "./type";
+import Counter from "../../shared/Counter";
 
 function ProductCard({ data }: ProductProps) {
   const [isInCart, setIsInCart] = useState(false);
@@ -33,16 +34,16 @@ function ProductCard({ data }: ProductProps) {
         <h2 className="font-bold text-lg">{data.title}</h2>
         <div className="flex items-center justify-between gap-3">
           <p className="font-bold text-3xl">${data.price}</p>
-          <button
-            className={`transition-all border ${
-              isInCart
-                ? "border-red-500 bg-red-500"
-                : "border-slate-800 bg-slate-800"
-            } rounded-lg text-white py-2 px-3`}
-            onClick={handleToggle}
-          >
-            {isInCart ? "Remove" : "Add"}
-          </button>
+          {isInCart ? (
+            <Counter id={data.id} />
+          ) : (
+            <button
+              className={`transition-all border border-slate-800 bg-slate-800 rounded-lg text-white py-2 px-3`}
+              onClick={handleToggle}
+            >
+              Add
+            </button>
+          )}
         </div>
       </div>
     </article>

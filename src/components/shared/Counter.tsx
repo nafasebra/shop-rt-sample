@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/16/solid";
+import { useAppDispatch } from "../../service/store";
+import { removeCart } from "../../service/feature/Cart/CartSlice";
 
-function Counter() {
+interface CounterProps {
+  id: string;
+}
+
+function Counter({ id }: CounterProps) {
   const [counter, setCounter] = useState(1);
+  const dispatch = useAppDispatch();
 
   const handleCounter = (type: "inc" | "dec" | "del") => () => {
     switch (type) {
@@ -17,7 +24,7 @@ function Counter() {
         });
         break;
       case "del":
-        console.log("delete");
+        dispatch(removeCart(id))
         break;
       default:
         return;
@@ -41,7 +48,7 @@ function Counter() {
           <MinusIcon className="h-6 w-6" />
         </button>
       )}
-      <p className="w-24 text-center font-bold">{counter}</p>
+      <p className="w-8 text-center font-bold">{counter}</p>
       <button
         className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 text-white font-bold"
         onClick={handleCounter("inc")}

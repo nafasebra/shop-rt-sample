@@ -1,27 +1,28 @@
 import { Link } from "react-router-dom";
 import { addToCart, removeCart } from "../../../service/feature/Cart/CartSlice";
-import { useAppDispatch } from "../../../service/store";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../service/store";
+import { useCallback, useEffect, useState } from "react";
 import { ProductProps } from "./type";
 
-function ProductCard({data}: ProductProps) {
-  const [temp, setTemp] = useState(false);
-  const dispach = useAppDispatch();
+function ProductCard({ data }: ProductProps) {
+  const [isInCart, setIsInCart] = useState(false);
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.cart);
 
-  const ToggleButton = () => {
-    setTemp(!temp);
-    if (temp) {
-      dispach(removeCart(data.id));
-    } else {
-      dispach(
-        addToCart({
-          id: data.id,
-          title: data.title,
-          count: 1,
-        })
-      );
-    }
-  };
+  useEffect(() => {
+    const productInCart = state.carts.find((item) => item.id === data.id);
+    setIsInCart(!!productInCart);
+  }, [state, data.id]);
+
+  const handleToggle = useCallback(() => {
+    setIsInCart((prevState) => {
+      const newIsInCart = !prevState;
+      if (newIsInCart)
+        dispatch(addToCart({ id: data.id, title: data.title, count: 1 }));
+      else dispatch(removeCart(data.id));
+      return newIsInCart;
+    });
+  }, [dispatch, data.id, data.title]);
 
   return (
     <article className="border border-gray-300 rounded-lg p-4 flex flex-col items-center gap-4">
@@ -34,13 +35,13 @@ function ProductCard({data}: ProductProps) {
           <p>${data.price}</p>
           <button
             className={`transition-all border ${
-              temp
+              isInCart
                 ? "border-red-500 bg-red-500"
                 : "border-slate-800 bg-slate-800"
             } rounded-lg text-white py-2 px-3`}
-            onClick={ToggleButton}
+            onClick={handleToggle}
           >
-            {temp ? "Remove" : "Add"}
+            {isInCart ? "Remove" : "Add"}
           </button>
         </div>
       </div>

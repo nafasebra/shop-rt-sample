@@ -17,7 +17,7 @@ function CHeckout() {
     : 0;
 
   return (
-    <div className="space-y-6 w-full lg:w-[40%] rounded-lg border border-gray-300 p-6">
+    <div className="space-y-6 w-full lg:w-[30%] rounded-lg border border-gray-300 p-6">
       <p className="font-bold text-xl">Checkout</p>
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">

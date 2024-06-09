@@ -1,7 +1,12 @@
 import ProductCard from "../components/pages/Homepage/ProductCard";
 import products from '../assets/product.json'
+import { useAppSelector } from "../service/store";
 
 function Homepage() {
+  const store = useAppSelector(state => state.cart)
+
+  console.log(store)
+
   return (
     <section className="container space-y-4">
       <h2 className="font-bold text-2xl">Lastest products</h2>

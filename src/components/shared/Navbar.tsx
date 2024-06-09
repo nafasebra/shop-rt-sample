@@ -8,7 +8,9 @@ function Navbar() {
   return (
     <nav className="bg-slate-800 py-4">
       <div className="container flex items-center justify-between text-white">
-        <h1 className="font-bold text-xl">Shop</h1>
+        <Link to="/">
+          <h1 className="font-bold text-xl">Shop</h1>
+        </Link>
 
         <Link to="/cart">
           <div className="relative">

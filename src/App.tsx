@@ -1,6 +1,6 @@
 import Footer from "./components/shared/Footer";
 import Navbar from "./components/shared/Navbar";
-import { RouterProvider } from "react-router-dom";
+import { Outlet, RouterProvider } from "react-router-dom";
 import router from "./router";
 import Loading from "./components/shared/Loading";
 import { Provider } from "react-redux";
@@ -11,7 +11,7 @@ function App() {
     <Provider store={store}>
       <Navbar />
       <main className="min-h-screen bg-white container py-8">
-        <RouterProvider router={router} fallbackElement={<Loading />} />
+        <Outlet />
       </main>
       <Footer />
     </Provider>

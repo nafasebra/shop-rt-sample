@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './style/index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./style/index.css";
+import { RouterProvider } from "react-router";
+import router from "./router/index.tsx";
+import Loading from "./components/shared/Loading/index.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} fallbackElement={<Loading />} />
+  </React.StrictMode>
+);
